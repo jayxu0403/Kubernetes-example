@@ -1,3 +1,4 @@
+{{- if .Values.database.enabled -}}
 apiVersion: v1
 data:
   CreateDB.sql: |-
@@ -16,6 +17,7 @@ metadata:
   labels:
     app: database
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: database
@@ -54,3 +56,4 @@ spec:
     app: database
   ports:
   - port: 5432
+{{- end }}
