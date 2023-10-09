@@ -5,7 +5,6 @@ metadata:
   labels:
     app: frontend
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: frontend
@@ -16,7 +15,7 @@ spec:
     spec:
       containers:
       - name: react-frontend
-        image: lyzhang1999/frontend:latest
+        image: jayxu0403/frontend:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 3000

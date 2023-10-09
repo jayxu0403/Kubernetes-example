@@ -5,6 +5,8 @@ metadata:
   labels:
     app: backend
 spec:
+  # Answer of lesson 22
+  replicas: 1
   selector:
     matchLabels:
       app: backend
@@ -15,17 +17,17 @@ spec:
     spec:
       containers:
       - name: flask-backend
-        image: jayxu0403/backend:latest
+        image: "{{ .Values.backend.image }}:{{ .Values.backend.tag }}"
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
         env:
         - name: DATABASE_URI
-          value: pg-service
+          value: "{{ .Values.database.uri }}"
         - name: DATABASE_USERNAME
-          value: postgres
+          value: "{{ .Values.database.username }}"
         - name: DATABASE_PASSWORD
-          value: postgres
+          value: "{{ .Values.database.password }}"
         resources:
           requests:
             memory: "128Mi"
